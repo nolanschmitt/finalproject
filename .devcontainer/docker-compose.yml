@@ -1,0 +1,27 @@
+services:
+    autopsy:
+        image: eecs388/autopsy
+        restart: always
+        # Allocate sufficient memory to the Autopsy GUI process.
+        # If your machine is running out of memory, you might try decreasing this,
+        # though Autopsy may run into instability if you do so.
+        shm_size: 2g
+        # Access Autopsy via http://localhost:3880 in your browser,
+        # or by vnc://localhost:3881 in a VNC client.
+        ports:
+            - 3880:5800
+            - 3881:5900
+        volumes:
+            - ..:/workspaces/lab5
+            - ./Case.properties:/config/.autopsy/dev/config/Case.properties
+        environment:
+            # Some sensible defaults to give Autopsy's interface enough room to breathe.
+            # Feel free to change as you wish.
+            - DISPLAY_WIDTH=1920
+            - DISPLAY_HEIGHT=1080
+    workspace:
+        build: .
+        volumes:
+            - ..:/workspaces/lab5
+        # Prevent container from instantly exiting, allowing us to attach terminal
+        command: /bin/sh -c "sleep infinity"

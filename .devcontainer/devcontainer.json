@@ -1,0 +1,14 @@
+{
+    "name": "EECS 388 Lab 5",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "workspace",
+    "workspaceFolder": "/workspaces/lab5",
+    "remoteUser": "eecs388",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-azuretools.vscode-docker"
+            ]
+        }
+    }
+}

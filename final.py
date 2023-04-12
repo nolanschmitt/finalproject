@@ -74,7 +74,7 @@ def second():
         games_played = int(data[2].text.strip())
         three_points = int(round(float(data[8].text.strip())))
         rpg = int(round(float(data[16].text.strip())))
-      
+
 
         c.execute('''SELECT * FROM ncaa_teams WHERE team_name = ?''',
                 (team_name,))
@@ -88,10 +88,6 @@ def second():
 
         if items_stored == 25:
             break
-
-
-
-
 
 
 
@@ -116,7 +112,7 @@ def main():
     get_all_teams(api_key, conn, offset=offset, limit=25)
     second()
     counter += 1
-    
+
     with open(counter_file, 'wb') as f:
         pickle.dump(counter, f)
 
